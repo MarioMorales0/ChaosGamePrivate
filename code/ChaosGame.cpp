@@ -117,9 +117,18 @@ int main()
         {
             RectangleShape rect(Vector2f(10,10));
             rect.setPosition(Vector2f(vertices[i].x, vertices[i].y));
-            rect.setFillColor(Color::Blue);
+            rect.setFillColor(Color::White);
             window.draw(rect);
         }
+
+        for(int i = 0; i < points.size(); i++)
+        {
+            RectangleShape rect(Vector2f(1,1));
+            rect.setPosition(Vector2f(points[i].x, points[i].y));
+            rect.setFillColor(Color::White);
+            window.draw(rect);
+        }
+
         window.display();
     }
 }
