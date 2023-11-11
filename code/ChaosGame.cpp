@@ -1,4 +1,6 @@
 // Include important C++ libraries here
+// Group: Mario Mata, Ethan Henning
+
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <iostream>
@@ -31,11 +33,16 @@ int main()
 
     text.setFont(font);
 
-    text.setString("Hello world");
+    text.setString("Click three times on screen to create the triangle.");
 
     text.setCharacterSize(24);
 
     text.setFillColor(Color::White);
+
+    srand(time(nullptr));
+
+    int randNum;
+    Vector2f randVertex, midpoint;
 
 	while (window.isOpen())
 	{
@@ -44,6 +51,8 @@ int main()
 		Handle the players input
 		****************************************
 		*/
+        randNum = rand() % 3;
+
         Event event;
 		while (window.pollEvent(event))
 		{
@@ -68,6 +77,7 @@ int main()
                     {
                         ///fourth click
                         ///push back to points vector
+                        points.push_back(Vector2f(event.mouseButton.x, event.mouseButton.y));
                     }
                 }
             }
@@ -85,8 +95,14 @@ int main()
         if(points.size() > 0)
         {
             ///generate more point(s)
+
             ///select random vertex
+            randVertex = vertices.at(randNum);
+            midpoint.x = (randVertex.x - points.back().x) / 2;
+            midpoint.y = (randVertex.y - points.back().y) / 2;
+
             ///calculate midpoint between random vertex and the last point in the vector
+            points.push_back(midpoint);
             ///push back the newly generated coord.
         }
 
@@ -96,9 +112,9 @@ int main()
 		****************************************
 		*/
         window.clear();
+        window.draw(text);
         for(int i = 0; i < vertices.size(); i++)
         {
-            window.draw(text);
             RectangleShape rect(Vector2f(10,10));
             rect.setPosition(Vector2f(vertices[i].x, vertices[i].y));
             rect.setFillColor(Color::Blue);
