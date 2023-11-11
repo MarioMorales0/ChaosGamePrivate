@@ -23,7 +23,7 @@ int main()
 
     Font font;
 
-    if (!font.loadFromFile("KOMIKAP_.ttf"))
+    if (!font.loadFromFile("Sawasdee-Bold.ttf"))
     {
         cout << "Error loading font!!";
         return 2;
