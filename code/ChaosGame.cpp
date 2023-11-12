@@ -123,7 +123,7 @@ int main()
 
         for(int i = 0; i < points.size(); i++)
         {
-            RectangleShape rect(Vector2f(1,1));
+            RectangleShape rect(Vector2f(2,2));
             rect.setPosition(Vector2f(points[i].x, points[i].y));
             rect.setFillColor(Color::White);
             window.draw(rect);
