@@ -104,6 +104,7 @@ int main()
             ///calculate midpoint between random vertex and the last point in the vector
             points.push_back(midpoint);
             ///push back the newly generated coord.
+            //test
         }
 
         /*
