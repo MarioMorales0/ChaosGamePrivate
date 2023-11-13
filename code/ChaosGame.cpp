@@ -93,19 +93,31 @@ int main()
 		*/
 
         if(points.size() > 0)
-        {
-            ///generate more point(s)
+	{
+    		//generate more point(s)
+    		///select random vertex
+    		randVertex = vertices.at(randNum);
 
-            ///select random vertex
-            randVertex = vertices.at(randNum);
-            midpoint.x = (randVertex.x - points.back().x) / 2;
-            midpoint.y = (randVertex.y - points.back().y) / 2;
+    		midpoint.x = (randVertex.x - points.back().x) / 2;
+    		midpoint.y = (randVertex.y - points.back().y) / 2;
 
-            ///calculate midpoint between random vertex and the last point in the vector
-            points.push_back(midpoint);
-            ///push back the newly generated coord.
-            //test
-        }
+    		///calculate midpoint between random vertex and the last point in the vector
+    		points.push_back(midpoint);
+            	///push back the newly generated coord.
+	}
+	else
+	{
+		//srand(static_cast<unsigned int>(time(0)));
+		//above is a new rand but probably not neccesary
+		points startingPoint = points[randNum];
+		
+		midpoint.x = (startingPoint.x - points.back().x) / 2;
+		midpoint.y = (startingPoint.y - points.back().y) / 2;
+		
+		///calculate midpoint between random vertex and the last point in the vector
+		points.push_back(midpoint);
+		///push back the newly generated coord.
+	}
 
         /*
 		****************************************
@@ -124,7 +136,7 @@ int main()
 
         for(int i = 0; i < points.size(); i++)
         {
-            RectangleShape rect(Vector2f(2,2));
+            RectangleShape rect(Vector2f(1,1));
             rect.setPosition(Vector2f(points[i].x, points[i].y));
             rect.setFillColor(Color::White);
             window.draw(rect);
