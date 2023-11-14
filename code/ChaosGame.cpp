@@ -16,7 +16,7 @@ int main()
     // Create a video mode object
     VideoMode vm(1920, 1080);
     // Create and open a window for the game
-    RenderWindow window(vm, "Chaos Game", Style::Default);
+    RenderWindow window(vm, "Chaos Game Fractal Generator", Style::Default);
 
     vector<Vector2f> vertices;
     vector<Vector2f> points;
@@ -26,7 +26,7 @@ int main()
     if (!font.loadFromFile("Sawasdee-Bold.ttf"))
     {
         cout << "Error loading font!!";
-        return 2;
+        return 0;
     }
 
     Text text;
