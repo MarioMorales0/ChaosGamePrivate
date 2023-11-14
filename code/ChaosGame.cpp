@@ -33,7 +33,7 @@ int main()
 
     text.setFont(font);
 
-    text.setString("Click three times on screen to create the triangle.");
+    text.setString("Click three times on screen to create a triangle, then click again to start the algorithm.");
 
     text.setCharacterSize(24);
 
