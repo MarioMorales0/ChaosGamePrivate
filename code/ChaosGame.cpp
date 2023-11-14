@@ -14,9 +14,9 @@ using namespace std;
 int main()
 {
     // Create a video mode object
-	VideoMode vm(1920, 1080);
-	// Create and open a window for the game
-	RenderWindow window(vm, "Chaos Game", Style::Default);
+    VideoMode vm(1920, 1080);
+    // Create and open a window for the game
+    RenderWindow window(vm, "Chaos Game", Style::Default);
 
     vector<Vector2f> vertices;
     vector<Vector2f> points;
@@ -44,8 +44,8 @@ int main()
     int randNum;
     Vector2f randVertex, midpoint;
 
-	while (window.isOpen())
-	{
+    while (window.isOpen())
+    {
         /*
 		****************************************
 		Handle the players input
@@ -54,12 +54,12 @@ int main()
         randNum = rand() % 3;
 
         Event event;
-		while (window.pollEvent(event))
-		{
+        while (window.pollEvent(event))
+        {
             if (event.type == Event::Closed)
             {
-				// Quit the game when the window is closed
-				window.close();
+                // Quit the game when the window is closed
+                window.close();
             }
             if (event.type == sf::Event::MouseButtonPressed)
             {
@@ -83,9 +83,9 @@ int main()
             }
         }
         if (Keyboard::isKeyPressed(Keyboard::Escape))
-		{
-			window.close();
-		}
+        {
+            window.close();
+        }
         /*
 		****************************************
 		Update
@@ -93,31 +93,18 @@ int main()
 		*/
 
         if(points.size() > 0)
-	{
-    		//generate more point(s)
-    		///select random vertex
-    		randVertex = vertices.at(randNum);
+        {
+            ///generate more point(s)
 
-    		midpoint.x = (randVertex.x - points.back().x) / 2;
-    		midpoint.y = (randVertex.y - points.back().y) / 2;
+            ///select random vertex
+            randVertex = vertices.at(randNum);
+            midpoint.x = (randVertex.x + points.back().x) / 2;
+            midpoint.y = (randVertex.y + points.back().y) / 2;
 
-    		///calculate midpoint between random vertex and the last point in the vector
-    		points.push_back(midpoint);
-            	///push back the newly generated coord.
-	}
-	else
-	{
-		//srand(static_cast<unsigned int>(time(0)));
-		//above is a new rand but probably not neccesary
-		points startingPoint = points[randNum];
-		
-		midpoint.x = (startingPoint.x - points.back().x) / 2;
-		midpoint.y = (startingPoint.y - points.back().y) / 2;
-		
-		///calculate midpoint between random vertex and the last point in the vector
-		points.push_back(midpoint);
-		///push back the newly generated coord.
-	}
+            ///calculate midpoint between random vertex and the last point in the vector
+            points.push_back(midpoint);
+            ///push back the newly generated coord.
+        }
 
         /*
 		****************************************
